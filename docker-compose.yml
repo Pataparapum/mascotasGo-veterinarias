@@ -1,0 +1,11 @@
+services:
+  veterinariaDb:
+    image: postgres
+    container_name: veterinariaDb
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_DB}
+    ports:
+      - 5433:5432
+    
