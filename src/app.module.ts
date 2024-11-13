@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './jwt/jwt.constant';
 import { ConfigModule } from '@nestjs/config';
+import { PrismaService } from './prisma.service';
 
 @Module({
   imports: [
@@ -19,7 +20,6 @@ import { ConfigModule } from '@nestjs/config';
     })
   
   ],
-  controllers: [],
-  providers: [],
+  providers: [PrismaService],
 })
 export class AppModule {}

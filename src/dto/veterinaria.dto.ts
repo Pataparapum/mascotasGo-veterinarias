@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsNumber, IsString, MinLength } from "class-validator";
+import { IsNotEmpty, IsString, MinLength } from "class-validator";
 
 export class veterinariasDto {
 
@@ -15,7 +15,6 @@ export class veterinariasDto {
     direccion:string
 
     @IsString()
-    @IsNotEmpty()
     dueno:string
 }
 

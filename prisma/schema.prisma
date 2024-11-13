@@ -17,7 +17,7 @@ model Veterinarias {
   id                  String @id @default(cuid())
   nombre_veterinaria  String
   direccion           String
-  dueno               String
+  dueno               String @unique
   Cita Cita[]
 }
 
@@ -25,6 +25,6 @@ model Cita {
   id  String @id @default(cuid())
   detalles String?
   userId String
-  veterinaria Veterinarias @relation(fields: [veterinariaId], references: [id])
-  veterinariaId String 
+  veterinaria Veterinarias? @relation(fields: [veterinariaId], references: [id])
+  veterinariaId String?
 }
