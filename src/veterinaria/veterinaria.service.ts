@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Response } from 'express';
-import { datosDto } from 'src/dto/datos.dto';
-import { veterinariasDto } from 'src/dto/veterinaria.dto';
-import { PrismaService } from 'src/prisma.service';
+import { datosDto } from '../dto/datos.dto';
+import { veterinariasDto } from '../dto/veterinaria.dto';
+import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class VeterinariaService {

@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
-import { veterinariasDto } from 'src/dto/veterinaria.dto';
+import { veterinariasDto } from '../dto/veterinaria.dto';
 import { VeterinariaService } from './veterinaria.service';
-import { datosDto } from 'src/dto/datos.dto';
+import { datosDto } from '../dto/datos.dto';
 
 
 @Controller('veterinaria')

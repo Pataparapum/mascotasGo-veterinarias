@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Response,} from 'express';
-import { citaDto } from 'src/dto/cita.dto';
-import { PrismaService } from 'src/prisma.service';
+import { citaDto } from '../dto/cita.dto';
+import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class CitaService {

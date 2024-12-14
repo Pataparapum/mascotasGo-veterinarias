@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { VeterinariaController } from './veterinaria.controller';
 import { VeterinariaService } from './veterinaria.service';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma.service';
 
 
 @Module({

@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { Body, Controller, Delete, Get, Param, Post, Res } from '@nestjs/common';
 import { CitaService } from './cita.service';
-import { citaDto } from 'src/dto/cita.dto';
+import { citaDto } from '../dto/cita.dto';
 
 @Controller('cita')
 export class CitaController {
