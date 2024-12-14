@@ -1,29 +1,33 @@
-import { Body, Controller, Delete, Post, Put, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
-import { UserDto } from 'src/dto/user.dto';
 import { veterinariasDto } from 'src/dto/veterinaria.dto';
 import { VeterinariaService } from './veterinaria.service';
 import { datosDto } from 'src/dto/datos.dto';
-import { JwtAuthGuard } from 'src/jwt/jwt.guard';
+
 
 @Controller('veterinaria')
-@UseGuards(JwtAuthGuard)
 export class VeterinariaController {
 
     constructor(private veterinariaDb:VeterinariaService){}
 
-    @Post()
+    
+    @Post() 
     async addVeterinara(@Body() datos:datosDto, @Res() response:Response): Promise<Response> {
         return await this.veterinariaDb.addVeterinaria(datos, response);
     }
 
-    @Put()
-    async updateVeterinaria(@Body() veterinarias:{nueva:veterinariasDto, actual: veterinariasDto}, @Res() response:Response): Promise<Response>{
-        return await this.veterinariaDb.editVeterinaria(veterinarias, response);
+    @Put(':veterinariaId')
+    async updateVeterinaria(@Param('veterinariaId') id:string, @Body() veterinarias:veterinariasDto, @Res() response:Response): Promise<Response>{
+        return await this.veterinariaDb.editVeterinaria(id, veterinarias, response);
     }
 
-    @Delete()
-    async deleteVeterinaria(@Body() veterinaria:veterinariasDto, @Res() response:Response): Promise<Response> {
+    @Delete(':veterinariaId')
+    async deleteVeterinaria(@Param('veterinariaId') veterinaria:string, @Res() response:Response): Promise<Response> {
         return await this.veterinariaDb.deleteVeterinaria(veterinaria, response);
+    }
+
+    @Get(':user')
+    async getAll(@Param('user') user:string ,@Res() response:Response){
+        return await this.veterinariaDb.getAllUserVeterinarias(user, response);
     }
 }

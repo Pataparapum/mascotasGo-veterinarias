@@ -1,12 +1,9 @@
-import { response, Response } from 'express';
-import { Body, Controller, Delete, Get, Param, Post, Res, UseGuards } from '@nestjs/common';
+import { Response } from 'express';
+import { Body, Controller, Delete, Get, Param, Post, Res } from '@nestjs/common';
 import { CitaService } from './cita.service';
 import { citaDto } from 'src/dto/cita.dto';
-import { veterinariasDto } from 'src/dto/veterinaria.dto';
-import { JwtAuthGuard } from 'src/jwt/jwt.guard';
 
 @Controller('cita')
-@UseGuards(JwtAuthGuard)
 export class CitaController {
 
     constructor(private citaS:CitaService) {}
@@ -16,13 +13,13 @@ export class CitaController {
         return this.citaS.addCita(nuevaCita, response);
     }
 
-    @Delete()
-    deleteCita(@Body() cita:citaDto, @Res() response:Response) {
+    @Delete(':id')
+    deleteCita(@Param('id') cita:string, @Res() response:Response) {
         return this.citaS.cancelCita(cita, response);
     }
 
-    @Get()
-    getAllCita(@Body() veterinaria:veterinariasDto, @Res() response:Response){
+    @Get('veterinaria/:id')
+    getAllCita(@Param('id') veterinaria:string, @Res() response:Response){
         return this.citaS.getAllCita(veterinaria, response);
     }
 
