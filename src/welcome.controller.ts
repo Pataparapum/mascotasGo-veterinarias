@@ -3,7 +3,7 @@ import { Response } from 'express';
 
 
 
-@Controller('')
+@Controller()
 export class welcomeController {
     
     @Get()
